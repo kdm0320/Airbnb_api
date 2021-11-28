@@ -9,6 +9,7 @@ django-seed = "*"
 faker = "*"
 pillow = "*"
 psycopg2 = "*"
+djangorestframework = "*"
 
 [dev-packages]
 black = "*"
