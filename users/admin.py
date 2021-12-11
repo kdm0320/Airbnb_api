@@ -20,3 +20,5 @@ class UserAdmin(UserAdmin):
     )
 
     list_display = UserAdmin.list_display + ("room_count",)
+
+    filter_horizontal = ("favs",)

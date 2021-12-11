@@ -27,6 +27,7 @@ class ReadUserSerializer(serializers.ModelSerializer):
             "is_superuser",
             "is_staff",
             "is_active",
+            "favs",
             "date_joined",
         )
 
@@ -42,5 +43,4 @@ class WriteUserSerializer(serializers.ModelSerializer):
         )
 
     def validate_first_name(self, value):
-        print(value)
         return value.upper()
