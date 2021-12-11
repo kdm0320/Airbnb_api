@@ -1,3 +1,4 @@
+from django.db.models import fields
 from rest_framework import serializers
 from .models import User
 
@@ -28,3 +29,18 @@ class ReadUserSerializer(serializers.ModelSerializer):
             "is_active",
             "date_joined",
         )
+
+
+class WriteUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+        )
+
+    def validate_first_name(self, value):
+        print(value)
+        return value.upper()
