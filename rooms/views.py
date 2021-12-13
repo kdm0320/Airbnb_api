@@ -6,25 +6,6 @@ from .models import Room
 from .serializers import RoomSerializer
 from .permissions import IsOwner
 
-# Room Fuction View
-# @api_view(["GET", "POST"])
-# def rooms_view(request):
-#     if request.method == "GET":
-#         rooms = Room.objects.all()[:5]
-#         serializer = ReadroomSerializer(rooms, many=True).data
-#         return Response(serializer)
-
-#     elif request.method == "POST":
-#         if not request.user.is_authenticated:
-#             return Response(status=status.HTTP_401_UNAUTHORIZED)
-#         serializer = WriteRoomSerializer(data=request.data)
-#         if serializer.is_valid():
-#             room = serializer.save(user=request.user)
-#             room_serializer = ReadroomSerializer(room).data
-#             return Response(data=room_serializer, status=status.HTTP_200_OK)
-#         else:
-#             return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 class RoomViewSet(ModelViewSet):
     queryset = Room.objects.all()
@@ -39,6 +20,13 @@ class RoomViewSet(ModelViewSet):
         else:
             permission_classes = [IsOwner]
         return [permission() for permission in permission_classes]
+
+    # def get_serializer_context(self):
+    #     return {
+    #         'request': self.request,
+    #         'format': self.format_kwarg,
+    #         'view': self
+    #     }
 
 
 @api_view(["GET"])
