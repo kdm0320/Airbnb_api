@@ -37,3 +37,6 @@ class RoomSerializer(serializers.ModelSerializer):
         request = self.context.get("request")
         room = Room.objects.create(**validated_data, user=request.user)
         return room
+
+
+print(Room.objects.all())
